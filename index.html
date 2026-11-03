@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 3: Cybercrimes & Cybersecurity — Interactive Web Portal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-logo">🛡️</div>
+        <div>
+          <div class="brand-badge">CHAPTER 3 PORTAL</div>
+          <div class="brand-title">Cybersecurity &amp; Law</div>
+        </div>
+      </div>
+
+      <div class="progress-card">
+        <div class="progress-header">
+          <span>Course Mastery</span>
+          <strong id="mastery-pct">0%</strong>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="mastery-bar" style="width: 0%"></div>
+        </div>
+        <div class="progress-sub" id="mastery-detail">0/16 Flashcards • 0/10 Quiz</div>
+      </div>
+
+      <nav class="nav-menu">
+        <div class="nav-group-label">LEARNING MODULES</div>
+        <button class="nav-item active" onclick="navigate('overview')" data-view="overview">
+          <span class="nav-icon">🌐</span>
+          <span>3.1–3.2 Global &amp; India Law</span>
+        </button>
+        <button class="nav-item" onclick="navigate('itact')" data-view="itact">
+          <span class="nav-icon">⚖️</span>
+          <span>3.3–3.6 Indian IT Act &amp; PKI</span>
+        </button>
+        <button class="nav-item" onclick="navigate('costipr')" data-view="costipr">
+          <span class="nav-icon">💡</span>
+          <span>3.7 Cost &amp; IPR in Cyberspace</span>
+        </button>
+        <button class="nav-item" onclick="navigate('webcloud')" data-view="webcloud">
+          <span class="nav-icon">☁️</span>
+          <span>3.8–3.9 Web &amp; Cloud Threats</span>
+        </button>
+        <button class="nav-item" onclick="navigate('secincident')" data-view="secincident">
+          <span class="nav-icon">🚨</span>
+          <span>3.10–3.11 Privacy &amp; CSIRT</span>
+        </button>
+
+        <div class="nav-group-label">INTERACTIVE LABS &amp; EXAM</div>
+        <button class="nav-item" onclick="navigate('gallery')" data-view="gallery">
+          <span class="nav-icon">🖼️</span>
+          <span>Visual Diagram Gallery (11)</span>
+        </button>
+        <button class="nav-item" onclick="navigate('flashcards')" data-view="flashcards">
+          <span class="nav-icon">🗂️</span>
+          <span>3D Flip Flashcards (16)</span>
+        </button>
+        <button class="nav-item" onclick="navigate('quiz')" data-view="quiz">
+          <span class="nav-icon">✅</span>
+          <span>Self-Assessment Quiz (10)</span>
+        </button>
+        <button class="nav-item" onclick="navigate('examqa')" data-view="examqa">
+          <span class="nav-icon">🎓</span>
+          <span>Solved Exam Q&amp;A (9)</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="downloads/Chapter_3_Cybercrimes_and_Cybersecurity_Interactive_Edition.docx" download class="download-btn">
+          📥 Download Illustrated .DOCX
+        </a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <div class="main-area">
+      <!-- TOPBAR -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+          <div class="search-box">
+            <span>🔍</span>
+            <input type="text" id="global-search" placeholder="Search sections, IT Act penalties, SQLi, IPR, or exam questions..." oninput="handleGlobalSearch(this.value)" />
+          </div>
+        </div>
+        <div class="topbar-right">
+          <span class="status-pill"><span class="dot"></span> Local Server Active</span>
+          <button class="theme-btn" onclick="toggleTheme()" id="theme-toggle-btn">☀️ Light Mode</button>
+        </div>
+      </header>
+
+      <!-- SEARCH RESULTS OVERLAY -->
+      <div id="search-results-box" class="search-results hidden"></div>
+
+      <!-- DYNAMIC VIEW CONTAINER -->
+      <main class="content-wrap">
+
+        <!-- VIEW 1: 3.1 - 3.2 GLOBAL & INDIA LEGAL LANDSCAPE -->
+        <section id="view-overview" class="view-section active">
+          <div class="hero-banner">
+            <div>
+              <span class="pill-tag">CHAPTER 3 • SECTIONS 3.1 &amp; 3.2</span>
+              <h1>Cybercrimes &amp; Cybersecurity: Legal &amp; Organizational Perspectives</h1>
+              <p>Explore the borderless nature of 21st-century cybercrime, international legal frameworks, and why India's digital economy requires robust cyber laws.</p>
+            </div>
+            <div class="hero-stats">
+              <div class="stat-box">
+                <div class="stat-val">$10.5T</div>
+                <div class="stat-lbl">Projected Global Cyber Cost (2026)</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-val">2000 / 2008</div>
+                <div class="stat-lbl">Indian IT Act &amp; Major Amendment</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-header">
+                <h2>🌍 3.1 Global Legal Landscape Explorer</h2>
+                <span class="badge">Click a Jurisdiction</span>
+              </div>
+              <p class="muted-text">In the 21st century, criminals exploit digital platforms across borders to steal data, disrupt services, and attack critical infrastructure.</p>
+              <div class="pill-tabs" id="jurisdiction-tabs"></div>
+              <div id="jurisdiction-detail" class="highlight-panel"></div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h2>🇮🇳 3.2 Why Does India Need Strong Cyber Laws?</h2>
+                <span class="badge badge-amber">Indian Context</span>
+              </div>
+              <p class="muted-text">With millions of daily UPI, online banking, and e-commerce transactions, India faces unique cybersecurity challenges:</p>
+              <div class="feature-list">
+                <div class="feature-item">
+                  <span class="feature-num">1</span>
+                  <div><strong>Rising Cybercrimes:</strong> Online financial fraud, identity theft, and phishing are growing rapidly every year.</div>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-num">2</span>
+                  <div><strong>National Security:</strong> Cyber terrorism and hacking attempts on defense, power grids, and government websites threaten sovereignty.</div>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-num">3</span>
+                  <div><strong>E-Commerce Growth:</strong> Ensures public trust in online shopping, digital payments, and legally binding e-contracts.</div>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-num">4</span>
+                  <div><strong>Digital India Initiative:</strong> Paperless e-governance (Aadhaar, DigiLocker, e-Filing) relies on a strong legal framework.</div>
+                </div>
+                <div class="feature-item">
+                  <span class="feature-num">5</span>
+                  <div><strong>User Protection:</strong> Safeguards citizens from cyberstalking, harassment, deepfakes, and financial fraud.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h2>📊 Visual Chapter Master Infographic (Sections 3.1 – 3.4)</h2>
+              <button class="btn-secondary" onclick="openLightbox('images/original_img_1.png', 'Chapter 3 Master Overview Infographic')">🔍 Fullscreen Zoom</button>
+            </div>
+            <div class="img-container" onclick="openLightbox('images/original_img_1.png', 'Chapter 3 Master Overview Infographic')">
+              <img src="images/original_img_1.png" alt="Chapter 3 Master Overview" />
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 2: 3.3 - 3.6 INDIAN IT ACT & DIGITAL SIGNATURES -->
+        <section id="view-itact" class="view-section">
+          <div class="section-top">
+            <div>
+              <span class="pill-tag">SECTIONS 3.3 – 3.6</span>
+              <h1>The Indian IT Act (2000 &amp; 2008), Digital Signatures &amp; Punishments</h1>
+              <p class="muted-text">Enacted on <strong>17th October 2000</strong> and amended in <strong>2008</strong> to govern e-commerce, PKI digital signatures, data protection, and cyber offenses.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h2>🖼️ Visual Reference: Indian IT Act Offenses &amp; Penalties</h2>
+              <button class="btn-secondary" onclick="openLightbox('images/diag_1_it_act_punishments.png', 'Indian IT Act Offenses & Penalties')">🔍 Zoom Diagram</button>
+            </div>
+            <div class="img-container" onclick="openLightbox('images/diag_1_it_act_punishments.png', 'Indian IT Act Offenses & Penalties')">
+              <img src="images/diag_1_it_act_punishments.png" alt="Indian IT Act Offenses & Penalties" />
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <!-- Interactive Section Penalty Lookup -->
+            <div class="card">
+              <div class="card-header">
+                <h2>⚖️ Interactive IT Act Section &amp; Penalty Finder</h2>
+                <span class="badge">Click Section</span>
+              </div>
+              <div class="pill-tabs" id="it-sec-tabs"></div>
+              <div id="it-sec-detail" class="highlight-panel"></div>
+            </div>
+
+            <!-- Interactive PKI Digital Signature Simulator -->
+            <div class="card">
+              <div class="card-header">
+                <h2>🔐 3.4 Interactive Digital Signature (PKI) Simulator</h2>
+                <span class="badge badge-green">Live Demo</span>
+              </div>
+              <p class="muted-text">Under the IT Act, PKI Digital Signatures issued by licensed <strong>Certifying Authorities (CAs)</strong> ensure <em>Authenticity, Integrity, and Non-Repudiation</em>. Try signing an e-contract below:</p>
+              <div class="sim-controls">
+                <label class="field-label">Electronic Contract Text:</label>
+                <input type="text" id="pki-input" class="text-input" value="Approve B2B Cloud Supply Contract #2026-IND for ₹25,00,000" oninput="updatePKISim()" />
+                <div class="pki-steps">
+                  <div class="pki-step">
+                    <div class="pki-step-title">1. SHA-256 Document Hash</div>
+                    <code id="pki-hash">8f434346648f6b96df89dda901c5176b...</code>
+                  </div>
+                  <div class="pki-step">
+                    <div class="pki-step-title">2. Encrypted Signature (Signer's Private Key)</div>
+                    <code id="pki-sig">SIG-RSA2048::9A7F2C1E8B4D...</code>
+                  </div>
+                  <div class="pki-step">
+                    <div class="pki-step-title">3. CA Public Key Verification Status</div>
+                    <div id="pki-status" class="status-valid">✔ VALIDATED — Authentic &amp; Non-Repudiable</div>
+                  </div>
+                </div>
+                <button class="btn-outline" onclick="tamperPKIDoc()">⚠️ Simulate Tampering in Transit</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 3: 3.7 COST OF CYBERCRIME & IPR -->
+        <section id="view-costipr" class="view-section">
+          <div class="section-top">
+            <div>
+              <span class="pill-tag">SECTION 3.7</span>
+              <h1>Cost of Cybercrime &amp; Intellectual Property Rights (IPR) in Cyberspace</h1>
+              <p class="muted-text">Understanding Direct vs. Indirect financial damages and the 4 pillars of digital intellectual property protection.</p>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-header">
+                <h2>💰 Cost of Cybercrime Infographic</h2>
+                <button class="btn-secondary" onclick="openLightbox('images/diag_2_cost_of_cybercrime.png', 'Cost of Cybercrime: Direct vs Indirect')">🔍 Zoom</button>
+              </div>
+              <div class="img-container" onclick="openLightbox('images/diag_2_cost_of_cybercrime.png', 'Cost of Cybercrime: Direct vs Indirect')">
+                <img src="images/diag_2_cost_of_cybercrime.png" alt="Cost of Cybercrime" />
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h2>©️ IPR in Cyberspace Infographic</h2>
+                <button class="btn-secondary" onclick="openLightbox('images/original_img_2.png', 'Intellectual Property Rights in Cyberspace')">🔍 Zoom</button>
+              </div>
+              <div class="img-container" onclick="openLightbox('images/original_img_2.png', 'Intellectual Property Rights in Cyberspace')">
+                <img src="images/original_img_2.png" alt="IPR in Cyberspace" />
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h2>🔍 Interactive Cyberspace IPR Violation Case Explorer</h2>
+              <span class="badge">7 Major Digital IPR Issues</span>
+            </div>
+            <div class="grid-3" id="ipr-cards-grid"></div>
+          </div>
+        </section>
+
+        <!-- VIEW 4: 3.8 - 3.9 WEB & CLOUD THREATS -->
+        <section id="view-webcloud" class="view-section">
+          <div class="section-top">
+            <div>
+              <span class="pill-tag">SECTIONS 3.8 &amp; 3.9</span>
+              <h1>Organizational Web Threats &amp; Cloud Computing Threats</h1>
+              <p class="muted-text">Analyze web attack vectors, compare SQL Injection vs. Cross-Site Scripting (XSS), and explore the 9 threats to multi-tenant cloud environments.</p>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-header">
+                <h2>🕸️ Web Threats to Organizations</h2>
+                <button class="btn-secondary" onclick="openLightbox('images/original_img_3.png', 'Web Threats to Organizations')">🔍 Zoom</button>
+              </div>
+              <div class="img-container" onclick="openLightbox('images/original_img_3.png', 'Web Threats to Organizations')">
+                <img src="images/original_img_3.png" alt="Web Threats" />
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h2>☁️ Cloud Computing Threats</h2>
+                <button class="btn-secondary" onclick="openLightbox('images/original_img_4.png', 'Cloud Computing Threats')">🔍 Zoom</button>
+              </div>
+              <div class="img-container" onclick="openLightbox('images/original_img_4.png', 'Cloud Computing Threats')">
+                <img src="images/original_img_4.png" alt="Cloud Threats" />
+              </div>
+            </div>
+          </div>
+
+          <!-- SQLi vs XSS Interactive Lab -->
+          <div class="card">
+            <div class="card-header">
+              <h2>⚔️ Interactive Lab: SQL Injection (SQLi) vs. Cross-Site Scripting (XSS)</h2>
+              <div class="pill-tabs">
+                <button class="pill-btn active" id="btn-lab-sqli" onclick="switchAttackLab('sqli')">SQL Injection (SQLi)</button>
+                <button class="pill-btn" id="btn-lab-xss" onclick="switchAttackLab('xss')">Cross-Site Scripting (XSS)</button>
+              </div>
+            </div>
+            <div id="attack-lab-content" class="highlight-panel"></div>
+            <div class="img-container mt-4" onclick="openLightbox('images/diag_3_sqli_vs_xss.png', 'SQL Injection vs Cross-Site Scripting')">
+              <img src="images/diag_3_sqli_vs_xss.png" alt="SQLi vs XSS Diagram" />
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 5: 3.10 - 3.11 SECURITY, PRIVACY, SOCIAL & INCIDENT HANDLING -->
+        <section id="view-secincident" class="view-section">
+          <div class="section-top">
+            <div>
+              <span class="pill-tag">SECTIONS 3.10 &amp; 3.11</span>
+              <h1>Security, Privacy, Social Computing &amp; Incident Handling (CSIRT)</h1>
+              <p class="muted-text">Explore security/privacy implications, social media risks, safe computing hygiene, and the 6-stage Incident Response lifecycle.</p>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-header">
+                <h2>🔒 Security, Privacy &amp; Social Computing</h2>
+                <button class="btn-secondary" onclick="openLightbox('images/diag_4_security_privacy_social.png', 'Security, Privacy & Social Computing')">🔍 Zoom</button>
+              </div>
+              <div class="img-container" onclick="openLightbox('images/diag_4_security_privacy_social.png', 'Security, Privacy & Social Computing')">
+                <img src="images/diag_4_security_privacy_social.png" alt="Security Privacy Social Computing" />
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h2>🚨 6-Stage Incident Handling &amp; Response</h2>
+                <button class="btn-secondary" onclick="openLightbox('images/original_img_5.png', 'Incident Handling & Response Lifecycle')">🔍 Zoom</button>
+              </div>
+              <div class="img-container" onclick="openLightbox('images/original_img_5.png', 'Incident Handling & Response Lifecycle')">
+                <img src="images/original_img_5.png" alt="Incident Handling" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive 6-Stage Incident Simulator -->
+          <div class="card">
+            <div class="card-header">
+              <h2>🛠️ Interactive CSIRT 6-Stage Incident Playbook Simulator</h2>
+              <span class="badge">Click Stage 1–6</span>
+            </div>
+            <div class="pill-tabs" id="csirt-tabs"></div>
+            <div id="csirt-detail" class="highlight-panel"></div>
+          </div>
+        </section>
+
+        <!-- VIEW 6: VISUAL DIAGRAM GALLERY -->
+        <section id="view-gallery" class="view-section">
+          <div class="section-top">
+            <div>
+              <span class="pill-tag">VISUAL LIBRARY</span>
+              <h1>Complete Chapter 3 Infographic &amp; Diagram Gallery (11 Visuals)</h1>
+              <p class="muted-text">Click any diagram to open it in fullscreen high-resolution view.</p>
+            </div>
+          </div>
+          <div class="grid-3" id="gallery-grid"></div>
+        </section>
+
+        <!-- VIEW 7: 3D FLIP FLASHCARDS -->
+        <section id="view-flashcards" class="view-section">
+          <div class="section-top">
+            <div>
+              <span class="pill-tag">ACTIVE RECALL</span>
+              <h1>Interactive 3D Flip Flashcards (16 Cards)</h1>
+              <p class="muted-text">Click the card to flip between the question prompt and the detailed answer. Mark cards as mastered to boost your progress!</p>
+            </div>
+          </div>
+
+          <div class="card flashcard-stage">
+            <div class="fc-toolbar">
+              <span class="badge" id="fc-status-text">Card 1 of 16</span>
+              <div class="fc-actions">
+                <button class="btn-secondary" onclick="shuffleCards()">🔀 Shuffle Deck</button>
+              </div>
+            </div>
+
+            <div class="fc-perspective" onclick="flipCurrentCard()">
+              <div class="fc-card-inner" id="fc-card-inner">
+                <div class="fc-face fc-front">
+                  <div class="fc-meta"><span id="fc-cat">CATEGORY</span><span>Click to Flip ↻</span></div>
+                  <div class="fc-text" id="fc-q-text">Question</div>
+                  <div class="fc-hint">Front — Term / Question</div>
+                </div>
+                <div class="fc-face fc-back">
+                  <div class="fc-meta"><span>MODEL ANSWER</span><span>Click to Flip ↻</span></div>
+                  <div class="fc-text-back" id="fc-a-text">Answer</div>
+                  <div class="fc-hint">Back — Key Exam Points</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="fc-nav-btns">
+              <button class="btn-secondary" onclick="prevFlashcard()">← Previous</button>
+              <button class="btn-primary" id="fc-master-btn" onclick="toggleMasterCard()">✓ Mark Mastered</button>
+              <button class="btn-secondary" onclick="nextFlashcard()">Next →</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 8: SELF-ASSESSMENT QUIZ -->
+        <section id="view-quiz" class="view-section">
+          <div class="section-top">
+            <div>
+              <span class="pill-tag">SELF-ASSESSMENT</span>
+              <h1>Interactive Chapter 3 Multiple-Choice Quiz (10 Questions)</h1>
+              <p class="muted-text">Select an option for instant grading and detailed explanations.</p>
+            </div>
+            <div class="quiz-header-actions">
+              <span class="score-pill" id="quiz-score-pill">Score: 0 / 10</span>
+              <button class="btn-secondary" onclick="resetQuizAll()">↻ Reset Quiz</button>
+            </div>
+          </div>
+          <div id="quiz-list" class="quiz-stack"></div>
+        </section>
+
+        <!-- VIEW 9: SOLVED EXAM REVIEW QUESTIONS (9 QUESTIONS) -->
+        <section id="view-examqa" class="view-section">
+          <div class="section-top">
+            <div>
+              <span class="pill-tag">SOLVED UNIVERSITY EXAM BANK</span>
+              <h1>Complete Solutions to All 9 Chapter Review Questions</h1>
+              <p class="muted-text">Includes visual diagrams for CIA Triad, Social Engineering, Phishing Variants, and SQL Injection Types.</p>
+            </div>
+            <div class="quiz-header-actions">
+              <button class="btn-secondary" onclick="expandAllQA(true)">Expand All</button>
+              <button class="btn-secondary" onclick="expandAllQA(false)">Collapse All</button>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-header">
+                <h2>🛡️ CIA Triad &amp; Social Engineering (Q 1C &amp; Q 2A)</h2>
+                <button class="btn-secondary" onclick="openLightbox('images/diag_5_cia_and_social_engineering.png', 'CIA Triad & Social Engineering')">🔍 Zoom</button>
+              </div>
+              <div class="img-container" onclick="openLightbox('images/diag_5_cia_and_social_engineering.png', 'CIA Triad & Social Engineering')">
+                <img src="images/diag_5_cia_and_social_engineering.png" alt="CIA Triad and Social Engineering" />
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h2>🎣 Phishing Variants &amp; SQLi Types (Q 2B &amp; Q 3A)</h2>
+                <button class="btn-secondary" onclick="openLightbox('images/diag_6_phishing_and_sqli_types.png', 'Phishing & SQLi Classifications')">🔍 Zoom</button>
+              </div>
+              <div class="img-container" onclick="openLightbox('images/diag_6_phishing_and_sqli_types.png', 'Phishing & SQLi Classifications')">
+                <img src="images/diag_6_phishing_and_sqli_types.png" alt="Phishing and SQLi Types" />
+              </div>
+            </div>
+          </div>
+
+          <div id="qa-accordion-list" class="qa-stack"></div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX MODAL FOR IMAGES -->
+  <div id="lightbox-modal" class="lightbox hidden" onclick="closeLightbox()">
+    <div class="lightbox-inner" onclick="event.stopPropagation()">
+      <div class="lightbox-bar">
+        <span id="lightbox-caption">Diagram Preview</span>
+        <button class="btn-secondary" onclick="closeLightbox()">✕ Close</button>
+      </div>
+      <img id="lightbox-img" src="" alt="Preview" />
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
