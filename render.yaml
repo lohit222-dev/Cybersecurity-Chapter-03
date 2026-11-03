@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: chapter3-cyber-portal
+    env: static
+    buildCommand: ""
+    staticPublishPath: .
